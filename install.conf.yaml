@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/sway: config/sway
+    ~/.config/waybar: config/waybar
+    ~/.config/nvim: config/nvim
+    ~/.config/fish: config/fish
+    ~/.wal: wal
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

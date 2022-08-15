@@ -1,0 +1,81 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 15,
+    "modules-left": ["sway/mode", "sway/workspaces","sway/window", "custom/spotify"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "☕️",
+            "deactivated": ""
+        }
+    },
+
+    "sway/mode": {
+        "format": "{}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "clock": {
+        // 24hr Robot Friendly
+        "format": "{:%Y-%m-%d - %H:%M}",
+	      "on-click": "foot --app-id='menu' calcurse"
+    },
+    "cpu": {
+        "format": "⚙️",
+        "on-click": "alacritty -t 'Floating Terminal' -e htop"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "📦️"
+    },
+
+    "battery": {
+        "interval": "60",
+        "format": "🔋"
+    },
+
+    "network": {
+        "format-wifi": "📶",
+        "format-ethernet": "{ifname}",
+        "format-disconnected": "Disconnected"
+    },
+    "pulseaudio": {
+        "format": "🐵 {volume}%",
+        "format-bluetooth": "🙈 {volume}%",
+        "format-muted": "🙊",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["🔈️" , "🔉", "🔊"]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/spotify": {
+        "exec": "/usr/bin/python3 /home/anuraghkp/.config/waybar/mediaplayer.py --player spotify",
+        "format": "{}  ",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    }
+   }
+}
