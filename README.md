@@ -9,6 +9,17 @@ This is my personal .dot-files repository, where all my custom dotfiles and inst
 ## Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+## Features
+
+- Sway and waybar
+- Fish with fisher plugin manager
+- foot as terminal emulator
+- ulauncher 
+- nvim with https://nvchad.github.io
+- Screen sharing
+- Optimized for java based applicaion
+
+
 ## Installation
 
 You can manually copy all files or you can use dotbot
