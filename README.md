@@ -23,3 +23,11 @@ If you need All packages (it's work only in arch based system .it include all my
   ./install packages
 ```
     
+## Authors
+
+- [@kpanuragh](https://www.github.com/kpanuragh)
+
+
+## 🚀 About Me
+I'm a full stack developer...
+
