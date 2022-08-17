@@ -8,6 +8,7 @@ set -g -x ELM_ENGINE wayland_egl
 set -g -x ELM_ACCEL opengl
 set -g -x EDITOR nvim
 set -g -x PATH $HOME/.cargo/bin $PATH
+set -g -x TERM xterm-256color
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end

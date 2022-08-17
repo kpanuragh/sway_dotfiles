@@ -183,6 +183,8 @@ for_window [app_id="menu"] floating enable
     # Move focus to the parent container
     bindsym $mod+a focus parent
 #
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
