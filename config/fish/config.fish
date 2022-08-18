@@ -9,6 +9,8 @@ set -g -x ELM_ACCEL opengl
 set -g -x EDITOR nvim
 set -g -x PATH $HOME/.cargo/bin $PATH
 set -g -x TERM xterm-256color
+set -g -x PATH $HOME/.local/bin $PATH
+set --universal nvm_default_version v16.17.0
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end

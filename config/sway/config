@@ -28,6 +28,7 @@ exec autotiling
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 exec mako
+exec poweralertd
 bindsym $mod+p exec $clipboard
 bindsym $mod+Space exec ulauncher
 bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -

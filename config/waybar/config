@@ -44,8 +44,13 @@
     },
 
     "battery": {
-        "interval": "60",
-        "format": "🔋"
+            "interval": 60,
+            "states": {
+               "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", "",""]
     },
 
     "network": {
