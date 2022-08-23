@@ -11,6 +11,8 @@ set -g -x PATH $HOME/.cargo/bin $PATH
 set -g -x TERM xterm-256color
 set -g -x PATH $HOME/.local/bin $PATH
 set --universal nvm_default_version v16.17.0
+set -g -x SSH_AUTH_SOCK /run/user/1000/keyring/ssh
+set -g -x GNOME_KEYRING_CONTROL /run/user/1000/keyring
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
