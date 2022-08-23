@@ -10,6 +10,7 @@
     ~/.config/nvim: config/nvim
     ~/.config/fish: config/fish
     ~/.wal: wal
+    ~/.config/nvim/lua/custom: custom
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
