@@ -124,9 +124,9 @@ exec swaybg -i ~/.wal/bg.jpg -m fill
 # Workspaces:
 #
 set $ws1 ""
-set $ws2 ""
-set $ws3 ""
-set $ws4 ""
+set $ws2 ""
+set $ws3 "﬐"
+set $ws4 "אַ"
 set $ws5 "ﱮ"
 set $ws6 "阮"
     # Switch to workspace
