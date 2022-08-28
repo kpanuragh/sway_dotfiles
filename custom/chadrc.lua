@@ -1,15 +1,17 @@
--- Just an example, supposed to be placed in /lua/custom/
+local pluginConfs = require("custom.plugins.configs")
 
 local M = {}
--- make sure you maintain the structure of `core/default_config.lua` here,
--- example of changing theme:
 
 M.ui = {
-  theme = "gruvbox",
+	theme = "gruvbox",
 }
 M.plugins = {
-  user = require "custom.plugins"
+	user = require("custom.plugins"),
+	override = {
+		["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
+		["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
+		-- ["nvim-telescope/telescope.nvim"] = pluginConfs.telescope,
+	},
 }
-
 
 return M
