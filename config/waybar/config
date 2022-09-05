@@ -3,8 +3,8 @@
     "position": "top",
     "height": 15,
     "modules-left": ["sway/mode", "sway/workspaces","sway/window", "custom/spotify"],
-    "modules-center": ["custom/discord"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory","custom/discord", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -82,9 +82,13 @@
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
     },
-   "custom/discord":{
-        "exec":"/home/anuraghkp/Projects/discord.fish/src/discord",
-       "format":"Hello Here",
-     }
+    "custom/discord":{
+        "exec":"/home/anuraghkp/.local/share/nvm/v16.17.0/bin/node /home/anuraghkp/Projects/discord.fish/src/discord true",
+        "format":"{}",
+        "format-icons":{
+          "activated": "☕️",
+            "deactivated": ""
+          }
+      }
    }
 }
