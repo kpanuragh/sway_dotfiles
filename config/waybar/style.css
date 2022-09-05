@@ -83,11 +83,11 @@ window#waybar {
     background-color: #1DB954;
     color: #fdfdfd;
 }
-.custom-discord {
- padding: 0 10px;
-    margin: 0 4px;
-    background-color: #1DB954;
+#custom-discord {
+    background-color: greenyellow;
     color: #fdfdfd;
+    border-radius: 50;
+    padding:5px;
 }
 #battery{
     color: #fdfdfd;
