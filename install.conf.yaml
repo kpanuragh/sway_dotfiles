@@ -9,6 +9,7 @@
     ~/.config/waybar: config/waybar
     ~/.config/nvim: config/nvim
     ~/.config/fish: config/fish
+    ~/.config/foot: config/foot
     ~/.wal: wal
     ~/.config/nvim/lua/custom: custom
 
