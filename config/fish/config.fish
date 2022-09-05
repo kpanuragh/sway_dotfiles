@@ -21,6 +21,8 @@ set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/s
 set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
 alias cat  "bat";
 alias ls "exa --icons";
+alias vi "nvim";
+alias vim "nvim";
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
