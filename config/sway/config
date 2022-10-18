@@ -18,17 +18,23 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu foot --app-id="menu"  bash -c "compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec"
-set $clipboard foot --app-id="menu" clipman pick --print0 --tool=CUSTOM --tool-args="fzf --prompt 'pick > ' --bind 'tab:up' --cycle --read0"
+set $menu foot --app-id menu -e  bash -c "compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec"
+#set $clipboard foot --app-id menu -e clipman pick --print0 --tool=CUSTOM --tool-args="fzf --prompt 'pick > ' --bind 'tab:up' --cycle --read0"
+set $screenrecord wf-recorder -g "$(slurp)" -f ~/screenshots/mov-$(date +"%Y-%m-%d--%H-%M-%S.mp4")
+set $clipboard foot --app-id menu bash -c  "cliphist list  | fzf  | cliphist decode  | w-copy"
 default_border none
-exec wal -n -i ~/.wal/bg.jpg
+exec wal --backend colorz  -n -i ~/.wal/bg.jpg
 titlebar_border_thickness 0                                                     
 titlebar_padding 0
+#exec clipman restore
+exec wl-paste --watch cliphist store
 exec autotiling
-exec wl-paste -t text --watch clipman store
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+#exec wl-paste -t text --watch clipman store 1>> ~/.clipman.log 2>&1 &
+#exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+bindsym Shift+Control+F6 exec $screenrecord
+bindsym Ctrl+Shift+BackSpace exec killall -s SIGINT wf-recorder
 exec mako
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec  /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec poweralertd
 bindsym $mod+p exec $clipboard
 bindsym $mod+Space exec ulauncher
@@ -157,7 +163,7 @@ set $ws6 "阮"
 
 
 for_window [app_id="menu"] floating enable
-
+for_window [title="Ulauncher"] border none
 
 #
 # Layout stuff:

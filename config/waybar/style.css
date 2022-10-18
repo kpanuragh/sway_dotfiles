@@ -4,17 +4,17 @@
     font-family: "Hasklig";
     font-size: 18px;
     min-height: 0;
-    color: #fdfdfd;
+    color: #E5E9F0;
 }
 
 window#waybar {
-    background: #424250;
+    background: #4C566A;
 }
 
 #window {
     padding: 0px 5px;
     font-size:0.8em;
-    border-radius:50
+    /*border-radius:50 */
 }
 
 #workspaces, #clock, #custom-spotify, #window { 
@@ -22,32 +22,32 @@ window#waybar {
 }
 
 #tray * {
-    color: #fdfdfd;
+    color: #ECEFF4;
     background-color: #44f135;
 }
 
 /* Workspace Buttons */
 #workspaces button label{
-    color: #fdfdfd;
+    color: #ECEFF4;
     font-size: 30px;
 }
 #workspaces button.focused label {
-    color: #fdfdfd;
+    color: #ECEFF4;
 }
 #workspaces button.focused {
-    background: #37efba; 
+    background: #2E3440; 
 }
 #workspaces button:hover{
-  background-color:#005d57;
+  background-color:#3B4252;
 }
 #mode {
     background-color: #fd472f;
-    color: #fdfdfd;
+    color: #E5E9F0;
 }
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #idle_inhibitor {
-    padding: 0 10px;
-    border-radius:50
+    padding:10px;
+    /*border-radius:50*/
   
 }
 
@@ -64,52 +64,52 @@ window#waybar {
 
 #clock {
     margin: 0;
-    color: #fdfdfd;
-    background-color: #6fd8f2;
+    color: #E5E9F0;
+    background-color: #8FBCBB;
 }
 
 
 #network.disconnected {
-    color: #fdfdfd;
+    color: #E5E9F0;
 }
 
 
 #pulseaudio.muted {
-    color: #fdfdfd;
+    color: #E5E9F0;
 }
 .custom-spotify {
     padding: 0 10px;
     margin: 0 4px;
     background-color: #1DB954;
-    color: #fdfdfd;
+    color: #E5E9F0;
 }
 #custom-discord {
     background-color: greenyellow;
-    color: #fdfdfd;
+    color: #E5E9F0;
     border-radius: 50;
     padding:5px;
 }
 #battery{
-    color: #fdfdfd;
-    background-color: #f8d576;
+    color: #E5E9F0;
+    background-color: #88C0D0;
 }
 #memory{
-    color: #fdfdfd;
-    background-color: violet;
+    color: #E5E9F0;
+    background-color: #B48EAD;
 }
 #cpu{
-    color: #fdfdfd;
-    background-color: #c0c0cc;
+    color: #E5E9F0;
+    background-color: #D08770;
 }
 #network{
-    color:#fdfdfd;
-    background-color: #f86750;
+    color:#E5E9F0;
+    background-color: #81A1C1;
 }
 #pulseaudio{
-    color: #fdfdfd;
-    background-color: #ffb10e;
+    color: #E5E9F0;
+    background-color: #A3BE8C;
 }
 #window{
-    background-color: #3a3a44;
-    color: #fdfdfd;
+    background-color: #434C5E;
+    color: #E5E9F0;
 }

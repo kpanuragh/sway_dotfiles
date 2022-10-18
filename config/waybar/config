@@ -1,7 +1,6 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 15,
     "modules-left": ["sway/mode", "sway/workspaces","sway/window", "custom/spotify"],
     "modules-center": [],
     "modules-right": ["pulseaudio", "network", "cpu", "memory","custom/discord", "battery", "clock"],
@@ -34,13 +33,13 @@
 	      "on-click": "foot --app-id='menu' calcurse"
     },
     "cpu": {
-        "format": "⚙️",
+        "format": "",
         "on-click": "alacritty -t 'Floating Terminal' -e htop"
     },
 
     "memory": {
         "interval": 30,
-        "format": "📦️"
+        "format": ""
     },
 
     "battery": {
@@ -54,14 +53,14 @@
     },
 
     "network": {
-        "format-wifi": "📶",
+        "format-wifi": "",
         "format-ethernet": "{ifname}",
         "format-disconnected": "Disconnected"
     },
     "pulseaudio": {
-        "format": "🐵 {volume}%",
-        "format-bluetooth": "🙈 {volume}%",
-        "format-muted": "🙊",
+        "format": "ﰝ {volume}%",
+        "format-bluetooth": "{volume}%",
+        "format-muted": " ",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
