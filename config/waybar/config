@@ -1,9 +1,9 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["sway/mode", "sway/workspaces","sway/window", "custom/spotify"],
-    "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory","custom/discord", "battery", "clock"],
+    "modules-left": ["sway/mode", "sway/workspaces"],
+    "modules-center": ["custom/spotify"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -54,8 +54,9 @@
 
     "network": {
         "format-wifi": "",
-        "format-ethernet": "{ifname}",
-        "format-disconnected": "Disconnected"
+        "format-ethernet": "",
+        "format-disconnected": "睊",
+        "on-click":"foot --app-id menu -e  bash -c 'nmtui' "
     },
     "pulseaudio": {
         "format": "ﰝ {volume}%",
@@ -70,12 +71,16 @@
             "car": "",
             "default": ["🔈️" , "🔉", "🔊"]
         },
-        "on-click": "pavucontrol"
+        "on-click": "foot --app-id menu -e  bash -c 'pulsemixer'"
     },
-
+    "custom/sunpaper": {
+      "exec": "/home/anuraghkp/Projects/sunpaper/sunpaper.sh --waybar",
+      "interval": 60,
+      "return-type": "json"
+     },
     "custom/spotify": {
         "exec": "/usr/bin/python3 /home/anuraghkp/.config/waybar/mediaplayer.py --player spotify",
-        "format": "{}  ",
+        "format": "ﱘﱘﱘ {} ﱘﱘﱘ",
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",

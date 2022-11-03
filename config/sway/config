@@ -21,14 +21,15 @@ set $term foot
 set $menu foot --app-id menu -e  bash -c "compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec"
 #set $clipboard foot --app-id menu -e clipman pick --print0 --tool=CUSTOM --tool-args="fzf --prompt 'pick > ' --bind 'tab:up' --cycle --read0"
 set $screenrecord wf-recorder -g "$(slurp)" -f ~/screenshots/mov-$(date +"%Y-%m-%d--%H-%M-%S.mp4")
-set $clipboard foot --app-id menu bash -c  "cliphist list  | fzf  | cliphist decode  | w-copy"
+set $clipboard foot --app-id menu bash -c  "cliphist list  | fzf  | cliphist decode  | wl-copy"
 default_border none
-exec wal --backend colorz  -n -i ~/.wal/bg.jpg
+#exec wal --backend colorz  -n -i ~/.wal/bg.jpg
 titlebar_border_thickness 0                                                     
 titlebar_padding 0
 #exec clipman restore
 exec wl-paste --watch cliphist store
 exec autotiling
+#exec /home/anuraghkp/Projects/sunpaper/sunpaper.sh -d
 #exec wl-paste -t text --watch clipman store 1>> ~/.clipman.log 2>&1 &
 #exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 bindsym Shift+Control+F6 exec $screenrecord
@@ -39,6 +40,15 @@ exec poweralertd
 bindsym $mod+p exec $clipboard
 bindsym $mod+Space exec ulauncher
 bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
+bindsym XF86AudioRaiseVolume exec volumectl -u up
+bindsym XF86AudioLowerVolume exec volumectl -u down
+bindsym XF86AudioMute exec volumectl toggle-mute
+bindsym XF86AudioMicMute exec volumectl -m toggle-mute
+
+bindsym XF86MonBrightnessUp exec lightctl up
+bindsym XF86MonBrightnessDown exec lightctl down
+
+exec "avizo-service"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -134,7 +144,7 @@ set $ws2 ""
 set $ws3 "﬐"
 set $ws4 "אַ"
 set $ws5 "ﱮ"
-set $ws6 "阮"
+set $ws6 ""
     # Switch to workspace
     bindsym $mod+1 workspace  $ws1
     bindsym $mod+2 workspace  $ws2
@@ -161,11 +171,14 @@ set $ws6 "阮"
     # We just use 1-10 as the default.
 
 
-
+focus_on_window_activation focus
+focus_on_window_activation urgent
 for_window [app_id="menu"] floating enable
 for_window [title="Ulauncher"] border none
-
-#
+assign [class="Brave-browser"] workspace $ws1
+assign [app_id="foot"] workspace $ws2
+assign [class="discord"] workspace $ws3
+assign [class="spotify"] workspace $ws6
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
