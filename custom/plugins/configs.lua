@@ -13,6 +13,7 @@ M.treesitter = {
 		"jsdoc",
 		"json",
 		"scss",
+    "go"
 	},
 }
 

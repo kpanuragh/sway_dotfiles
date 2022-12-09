@@ -29,7 +29,7 @@
 
     "clock": {
         // 24hr Robot Friendly
-        "format": "{:%Y-%m-%d - %H:%M}",
+        "format": "{:%Y-%m-%d - %H:%M %p}",
 	      "on-click": "foot --app-id='menu' calcurse"
     },
     "cpu": {
