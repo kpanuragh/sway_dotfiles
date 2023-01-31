@@ -1,4 +1,4 @@
 #!/bin/bash
 pkill waybar
-waybar &
+/home/anuragh/Projects/Waybar/build/waybar &
 

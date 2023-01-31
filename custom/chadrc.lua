@@ -3,7 +3,7 @@ local pluginConfs = require("custom.plugins.configs")
 local M = {}
 
 M.ui = {
-	theme = "everforest",
+	theme = "nord",
 }
 M.plugins = {
 	user = require("custom.plugins"),

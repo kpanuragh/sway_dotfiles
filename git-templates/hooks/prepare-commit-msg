@@ -1,0 +1,33 @@
+#!/usr/bin/env python
+
+import sys, os, re
+from subprocess import check_output
+
+# Collect the parameters
+commit_msg_filepath = sys.argv[1]
+if len(sys.argv) > 2:
+    commit_type = sys.argv[2]
+else:
+    commit_type = ''
+if len(sys.argv) > 3:
+    commit_hash = sys.argv[3]
+else:
+    commit_hash = ''
+
+print ("prepare-commit-msg: File: %s\nType: %s\nHash: %s" %(commit_msg_filepath, commit_type, commit_hash))
+
+# Figure out which branch we're on
+branch = check_output(['git', 'symbolic-ref', '--short', 'HEAD']).strip()
+branch = branch.decode('UTF-8')
+print ("prepare-commit-msg: On branch '%s'"% branch)
+
+# Populate the commit message with the issue #, if there is one
+if branch.startswith('SCOR-'):
+    print ("prepare-commit-msg: Oh hey, it's an issue branch.")
+    result = branch.split("-");
+    issue_number = result[1];
+
+    with open(commit_msg_filepath, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write("SCOR-%s | https://emil-reisser-weston.atlassian.net/browse/SCOR-%s | %s" % (issue_number,issue_number,content))

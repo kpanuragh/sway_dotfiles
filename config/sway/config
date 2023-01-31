@@ -3,7 +3,8 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-
+exec --no-startup-id dbus-update-activation-environment --all
+exec --no-startup-id gentoo-pipewire-launcher & 
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,7 +15,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -29,13 +30,17 @@ titlebar_padding 0
 #exec clipman restore
 exec wl-paste --watch cliphist store
 exec autotiling
+exec gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
+exec gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
+exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' 
 #exec /home/anuraghkp/Projects/sunpaper/sunpaper.sh -d
 #exec wl-paste -t text --watch clipman store 1>> ~/.clipman.log 2>&1 &
 #exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 bindsym Shift+Control+F6 exec $screenrecord
 bindsym Ctrl+Shift+BackSpace exec killall -s SIGINT wf-recorder
-exec mako
-exec  /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec swaync
+bindsym $mod+Shift+n exec swaync-client -t -sw
+exec  --no-starup-id /usr/bin/gnome-keyring-daemon --foreground --components="pkcs11,secrets,ssh"
 exec poweralertd
 bindsym $mod+p exec $clipboard
 bindsym $mod+Space exec ulauncher
@@ -63,6 +68,12 @@ exec swaybg -i ~/.wal/bg.jpg -m fill
 ### Idle configuration
 #
 # Example configuration:
+set $lock swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2
+exec swayidle -w \
+    timeout 600 $lock \
+    timeout 570 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $lock
 #
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
@@ -139,10 +150,10 @@ exec swaybg -i ~/.wal/bg.jpg -m fill
 #
 # Workspaces:
 #
-set $ws1 ""
-set $ws2 ""
+set $ws1 ""
+set $ws2 ""
 set $ws3 "﬐"
-set $ws4 "אַ"
+set $ws4 ""
 set $ws5 "ﱮ"
 set $ws6 ""
     # Switch to workspace
@@ -176,7 +187,7 @@ focus_on_window_activation urgent
 for_window [app_id="menu"] floating enable
 for_window [title="Ulauncher"] border none
 assign [class="Brave-browser"] workspace $ws1
-assign [app_id="foot"] workspace $ws2
+assign [app_id="kitty"] workspace $ws2
 assign [class="discord"] workspace $ws3
 assign [class="spotify"] workspace $ws6
 # Layout stuff:
@@ -242,7 +253,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 bar { 
-     swaybar_command waybar
+     swaybar_command /home/anuragh/Projects/Waybar/build/waybar
 }
 #
 # Status Bar:

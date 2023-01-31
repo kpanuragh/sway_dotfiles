@@ -1,9 +1,9 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["sway/mode", "sway/workspaces"],
-    "modules-center": ["custom/spotify"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock"],
+    "modules-left": ["custom/logo","sway/mode","image/album-art","custom/spotify-metadata"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["custom/jira-count","pulseaudio#icon","pulseaudio#sound","network", "cpu", "memory","temperature", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -19,72 +19,129 @@
     },
 
     "sway/mode": {
-        "format": "{}"
+        "format": "<span style=\"italic\">{}</span>"
     },
 
     "tray": {
         "icon-size": 16,
         "spacing": 10
     },
-
+     "custom/logo": {
+        "format": "  "
+    },
     "clock": {
         // 24hr Robot Friendly
-        "format": "{:%Y-%m-%d - %H:%M %p}",
-	      "on-click": "foot --app-id='menu' calcurse"
+        "format": "{:%Y-%m-%d - %I:%M %p}",
     },
     "cpu": {
-        "format": "",
-        "on-click": "alacritty -t 'Floating Terminal' -e htop"
+        "format": " {usage}% ",
+        "tooltip": false
     },
 
     "memory": {
-        "interval": 30,
-        "format": ""
+        "format": "   {}%"
     },
 
     "battery": {
-            "interval": 60,
-            "states": {
-               "warning": 30,
-                "critical": 15
-            },
-            "format": "{icon}",
-            "format-icons": ["", "", "", "", "",""]
+      "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
     },
-
+      "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C  {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
     "network": {
         "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "睊",
-        "on-click":"foot --app-id menu -e  bash -c 'nmtui' "
+        "format-ethernet": "",
+        "format-linked": "(No IP) ",
+        "format-disconnected": "",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 1,
+        "signal": 1
     },
-    "pulseaudio": {
-        "format": "ﰝ {volume}%",
-        "format-bluetooth": "{volume}%",
-        "format-muted": " ",
+    "pulseaudio#sound": {
+        "format": "{volume}",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "headphone": "",
+            "hands-free": "ﳃ",
+            "headset": "ﳃ",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["🔈️" , "🔉", "🔊"]
+            "default": ["", "", ""]
         },
-        "on-click": "foot --app-id menu -e  bash -c 'pulsemixer'"
+    },
+    "pulseaudio#icon": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-source-muted": "",
+        "on-click": "pactl set-sink-mute 0 toggle",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
     },
     "custom/sunpaper": {
       "exec": "/home/anuraghkp/Projects/sunpaper/sunpaper.sh --waybar",
       "interval": 60,
       "return-type": "json"
      },
+  "image/album-art": {
+	  "exec":"~/.config/waybar/custom/spotify/album_art.sh",
+	  "size": 40,
+    "interval":30,
+    "signal":8,
+    "on-click":"playerctl play-pause"
+    },
     "custom/spotify": {
-        "exec": "/usr/bin/python3 /home/anuraghkp/.config/waybar/mediaplayer.py --player spotify",
+        "exec": "/usr/bin/python /home/anuragh/.config/waybar/mediaplayer.py --player spotify",
         "format": "ﱘﱘﱘ {} ﱘﱘﱘ",
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
+    },
+    "custom/jira-count":{
+        "format":"{}",
+        "interval":100,
+        "return-type":"json",
+        "on-click":"/usr/bin/python ~/.config/waybar/custom/support_jira/open_in_browser.py active",
+        "on-click-right":"/usr/bin/python ~/.config/waybar/custom/support_jira/open_in_browser.py list",
+        "exec":"/usr/bin/python ~/.config/waybar/custom/support_jira/get_assigned_count.py"
+      },
+    "custom/spotify-metadata": {
+        "format": "{}  ",
+        "max-length": 60,
+        "interval": 30,
+        "return-type": "json",
+        "exec": "~/.config/waybar/custom/spotify/metadata.sh",
+        "on-click": "~/.config/waybar/custom/spotify/controls.sh",
+        "on-scroll-up": "~/.config/waybar/custom/spotify/controls.sh next",
+        "on-scroll-down": "~/.config/waybar/custom/spotify/controls.sh previous",
+        "signal": 5,
+        "smooth-scrolling-threshold": 1.0,
     },
     "custom/discord":{
         "exec":"/home/anuraghkp/.local/share/nvm/v16.17.0/bin/node /home/anuraghkp/Projects/discord.fish/src/discord true",
