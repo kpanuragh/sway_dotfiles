@@ -28,7 +28,7 @@
 }
 
 window#waybar {
-    background: #4C566A;
+    background: #17a88b;
 }
 
 #window {
@@ -39,6 +39,9 @@ window#waybar {
 #custom-jira-count {
    padding:10px;
 
+}
+#custom-teamwork {
+  padding: 10px;
 }
 #custom-jira-count.Highest{
    color:#ff5630;
@@ -56,7 +59,7 @@ window#waybar {
   color:#FFAB00;
 }
 #custom-spotify-metadata, #custom-spotify-play-pause, #custom-spotify-prev, #custom-spotify-next, #custom-spotify-quit {
-    color:              @white;
+    color:              #000000;
     padding:            0px 6px 0px 6px;
     font-size:          20px;
     font-weight: bold;
@@ -97,6 +100,9 @@ window#waybar {
 #workspaces button label{
     color: #ECEFF4;
     font-size: 30px;
+    font-weight:bold;
+    padding-left:10px;
+    padding-right:10px;
 }
 #workspaces button.focused label {
     color: #ECEFF4;

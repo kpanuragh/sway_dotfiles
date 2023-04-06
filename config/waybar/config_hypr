@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["custom/logo","sway/mode","image/album-art","custom/spotify-metadata"],
-    "modules-center": ["sway/workspaces"],
+    "modules-center": ["wlr/workspaces"],
     "modules-right": ["custom/jira-count","pulseaudio#icon","pulseaudio#sound","network", "cpu", "memory","temperature", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
@@ -17,7 +17,11 @@
             "deactivated": ""
         }
     },
-
+"wlr/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
+},
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },

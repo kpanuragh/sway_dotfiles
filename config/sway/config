@@ -3,6 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id gentoo-pipewire-launcher & 
 ### Variables
@@ -30,8 +31,8 @@ titlebar_padding 0
 #exec clipman restore
 exec wl-paste --watch cliphist store
 exec autotiling
-exec gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
-exec gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
+exec gsettings set org.gnome.desktop.interface gtk-theme "Breath-Dark2"
+exec gsettings set org.gnome.desktop.wm.preferences theme "Breath-Dark2"
 exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' 
 #exec /home/anuraghkp/Projects/sunpaper/sunpaper.sh -d
 #exec wl-paste -t text --watch clipman store 1>> ~/.clipman.log 2>&1 &
@@ -42,6 +43,8 @@ exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
 exec  --no-starup-id /usr/bin/gnome-keyring-daemon --foreground --components="pkcs11,secrets,ssh"
 exec poweralertd
+exec swaynoti
+#exec kdeconnect-handler
 bindsym $mod+p exec $clipboard
 bindsym $mod+Space exec ulauncher
 bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
@@ -57,6 +60,13 @@ exec "avizo-service"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#set $lock swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2
+#exec swayidle -w \
+#    timeout 10 $lock \
+#    timeout 10 'swaymsg "output * dpms off"' \
+#    resume 'swaymsg "output * dpms on"' \
+#    before-sleep $lock
+
 exec swaybg -i ~/.wal/bg.jpg -m fill
 #
 # Example configuration:
@@ -68,16 +78,14 @@ exec swaybg -i ~/.wal/bg.jpg -m fill
 ### Idle configuration
 #
 # Example configuration:
-set $lock swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2
-exec swayidle -w \
-    timeout 600 $lock \
-    timeout 570 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock
 #
+exec swayidle -w \
+  timeout 300 '/home/anuragh/.config/sway/create_lock_img.sh ; swaylock -e -f -i /tmp/lockscreen.png' \
+  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+
 # exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 10 'swaylock -f -c 000000' \
+#          timeout 10 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -88,12 +96,12 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+   input "1267:47:Elan_Touchpad" {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
