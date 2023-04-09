@@ -3,15 +3,20 @@
       relink: true
 
 - clean: ['~']
-
+- create:
+  - ~/.config
+  - ~/.local/bin
 - link:
     ~/.config/sway: config/sway
     ~/.config/waybar: config/waybar
-    ~/.config/nvim: config/nvim
-    ~/.config/fish: config/fish
     ~/.config/foot: config/foot
+    ~/.config/kitty: config/kitty
+    ~/.config/tmux: config/tmux
+    ~/.config/nvim: config/nvim
+    ~/.config/phpactor: config/phpactor
+    ~/.local/bin/t: config/scripts/t
+    ~/.git-templates: git-templates
     ~/.wal: wal
-    ~/.config/nvim/lua/custom: custom
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

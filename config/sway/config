@@ -5,7 +5,6 @@
 # Read `man 5 sway` for a complete reference.
 exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id dbus-update-activation-environment --all
-exec --no-startup-id gentoo-pipewire-launcher & 
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -43,7 +42,6 @@ exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
 exec  --no-starup-id /usr/bin/gnome-keyring-daemon --foreground --components="pkcs11,secrets,ssh"
 exec poweralertd
-exec swaynoti
 #exec kdeconnect-handler
 bindsym $mod+p exec $clipboard
 bindsym $mod+Space exec ulauncher
@@ -261,7 +259,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 bar { 
-     swaybar_command /home/anuragh/Projects/Waybar/build/waybar
+     swaybar_command waybar
 }
 #
 # Status Bar:

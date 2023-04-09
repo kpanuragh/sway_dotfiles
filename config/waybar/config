@@ -27,7 +27,7 @@
         "spacing": 10
     },
      "custom/logo": {
-        "format": "  "
+        "format": "  "
     },
     "clock": {
         // 24hr Robot Friendly
