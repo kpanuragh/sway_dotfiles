@@ -3,8 +3,8 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec --no-startup-id dbus-update-activation-environment --all
+exec dbus-sway-environment
+exec configure-gtk
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -51,8 +51,8 @@ bindsym XF86AudioLowerVolume exec volumectl -u down
 bindsym XF86AudioMute exec volumectl toggle-mute
 bindsym XF86AudioMicMute exec volumectl -m toggle-mute
 
-bindsym XF86MonBrightnessUp exec lightctl up
-bindsym XF86MonBrightnessDown exec lightctl down
+bindsym XF86MonBrightnessUp exec lightctl increase
+bindsym XF86MonBrightnessDown exec lightctl decrease
 
 exec "avizo-service"
 ### Output configuration
@@ -65,7 +65,7 @@ exec "avizo-service"
 #    resume 'swaymsg "output * dpms on"' \
 #    before-sleep $lock
 
-exec swaybg -i ~/.wal/bg.jpg -m fill
+exec swaybg -i ~/.wal/bg.png -m fill
 #
 # Example configuration:
 #
