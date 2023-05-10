@@ -5,8 +5,7 @@
 # Read `man 5 sway` for a complete reference.
 ### Variables
 #
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -30,9 +29,8 @@ titlebar_padding 0
 #exec clipman restore
 exec wl-paste --watch cliphist store
 exec autotiling
-exec gsettings set org.gnome.desktop.interface gtk-theme "Breath-Dark2"
-exec gsettings set org.gnome.desktop.wm.preferences theme "Breath-Dark2"
-exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' 
+exec gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
+exec gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 #exec /home/anuraghkp/Projects/sunpaper/sunpaper.sh -d
 #exec wl-paste -t text --watch clipman store 1>> ~/.clipman.log 2>&1 &
 #exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
@@ -158,9 +156,9 @@ exec swayidle -w \
 #
 set $ws1 ""
 set $ws2 ""
-set $ws3 "﬐"
-set $ws4 ""
-set $ws5 "ﱮ"
+set $ws3 "󰙯"
+set $ws4 ""
+set $ws5 ""
 set $ws6 ""
     # Switch to workspace
     bindsym $mod+1 workspace  $ws1

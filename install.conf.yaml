@@ -18,6 +18,9 @@
     ~/.local/bin/dbus-sway-environment: config/scripts/dbus-sway-environment
     ~/.git-templates: git-templates
     ~/.wal: wal
+    ~/.config/gammastep: config/gammastep
+    ~/.config/gtk-3.0: config/gtk-3.0
+    ~/.config/gtk-4.0: config/gtk-4.0
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
