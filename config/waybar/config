@@ -6,11 +6,11 @@
     "layer": "top",
     "position": "top",
     "modules-right": [ "sway/mode", "tray", "custom/containers", "disk", "memory", "cpu", "network", "pulseaudio", "backlight", "battery", "idle_inhibitor", "custom/bluelightfilter", "clock", "clock#utc", "custom/notification"],
-    "modules-center": [ "sway/scratchpad" ],
+    "modules-center": [ "sway/scratchpad","custom/spotify-metadata" ],
     "modules-left": ["sway/workspaces"],
     "sway/workspaces": {
         "disable-scroll": true,
-        "alphabetical_sort": true
+        "alphabetical_sort": false
     },
     "clock": {
         "format": "{:%a %d %b %H:%M}",
